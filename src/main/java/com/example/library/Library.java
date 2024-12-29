@@ -1,6 +1,8 @@
 package com.example.library;
 import java.util.*;
 
+import javax.management.RuntimeErrorException;
+
 public class Library {
 
     private List<Book> books;
@@ -22,6 +24,20 @@ public class Library {
             }
         }
         return availableBooks;
+    }
+
+    public void borrowBook(String isbn){
+        for(Book book : books){
+            if(book.getIsbn().equals(isbn)){
+                if(book.isAvailable()){
+                    book.setAvailable(false);
+                    return;
+                }else{
+                    throw new RuntimeException("Book not available");
+                }
+            }
+        }
+        throw new RuntimeException("Book not found");
     }
     
 }
