@@ -34,8 +34,33 @@ public class LibraryTest {
 
         assertEquals(0, books.size());
 
-        Exception exception = assertThrows(RuntimeException.class, () -> { library.borrowBook("1234567890");});
+        RuntimeException exception = null;
+
+        try {
+            library.borrowBook("1234567890");
+        } catch (RuntimeException e) {
+            exception = e; 
+            assertTrue(e.getMessage().contains("Expected exception message"));
+        }
 
         assertEquals("Book not available", exception.getMessage());
+    }
+
+    @Test
+    public void testReturnBook() {
+        Library library = new Library();
+        library.addBook("1234567890", "Sample Book", "John Doe", 2023);
+
+        library.borrowBook("1234567890");
+        List<Book> bookAfterBorrow = library.
+        getAvailableBooks();
+        assertEquals(0,bookAfterBorrow.size());
+
+        library.returnBook("1234567890");
+        List<Book> booksAfterReturn = library.getAvailableBooks();
+        assertEquals(1, booksAfterReturn.size());
+
+        Book returnedBook = booksAfterReturn.get(0);
+        assertEquals("1234567890",returnedBook.getIsbn());
     }
 }
