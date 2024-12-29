@@ -6,14 +6,15 @@ This project is a Test-Driven Development (TDD) Kata for implementing a Library 
 
 To create the project, use the following Maven command:
 
-```bash
+```sh
 mvn archetype:generate \
   -DgroupId=com.example.library \
   -DartifactId=library-management \
   -DarchetypeArtifactId=maven-archetype-quickstart \
   -DarchetypeVersion=1.4 \
   -DinteractiveMode=false
------
+```
+
 ## Test features
 
 1. adding book
