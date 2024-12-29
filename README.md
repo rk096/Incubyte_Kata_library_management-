@@ -14,6 +14,13 @@ mvn archetype:generate \
   -DarchetypeVersion=1.4 \
   -DinteractiveMode=false
 ```
+## run project
+
+run testcases using given command.
+
+```sh
+mvn test
+```
 
 ## Test features
 
