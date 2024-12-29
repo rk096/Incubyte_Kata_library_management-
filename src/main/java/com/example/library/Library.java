@@ -39,5 +39,15 @@ public class Library {
         }
         throw new RuntimeException("Book not found");
     }
+
+    public void returnBook(String isbn) {
+        for(Book book : books){
+            if (book.getIsbn().equals(isbn)) {
+                book.setAvailable(true);
+                return;
+            }
+        }
+        throw new RuntimeException("Book not found");
+    }
     
 }
